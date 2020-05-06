@@ -17,8 +17,8 @@ import java.util.List;
 public class MakeUpViewModel extends ViewModel {
 
     private MakeUpRepository makeUpRepository;
-    public MakeUpViewModel() {
-        makeUpRepository = new MakeUpRepository();
+    public MakeUpViewModel(String category) {
+        makeUpRepository = new MakeUpRepository(category);
     }
 
     public LiveData<List<MakeUp>> getMakeUpData() {

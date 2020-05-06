@@ -20,14 +20,15 @@ public class MakeUpRepository {
     Application application;
     MutableLiveData<List<MakeUp>> mutableLiveData = new MutableLiveData<>();
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private String sCategory;
 
-    public MakeUpRepository() {
-
+    public MakeUpRepository(String category) {
+      this.sCategory = category;
     }
 
     public MutableLiveData<List<MakeUp>> getMutableLiveData() {
         MakeUpClient makeUpClient = RetrofitInstance.getMakeUpClient();
-        makeUpClient.getMakeUpItems("powder")
+        makeUpClient.getMakeUpItems(sCategory)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<MakeUp>>() {

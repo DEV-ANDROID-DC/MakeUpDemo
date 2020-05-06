@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initViews();
-        makeUpViewModel = new ViewModelProvider(this).get(MakeUpViewModel.class);
+        makeUpViewModel = new ViewModelProvider(this, new MakeUpViewModelFactory("powder")).get(MakeUpViewModel.class);
         makeUpViewModel.getMakeUpData().observe(this, new Observer<List<MakeUp>>() {
             @Override
             public void onChanged(List<MakeUp> makeUps) {
